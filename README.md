@@ -53,6 +53,13 @@ Alice ->> SuiNS Registry: does f0f0.... own a-name.sui?
 ```
 
 ## Contracts
+
+### Current contracts/objects:
+- Package address: [0x5200b6ba568714169557299c02d0d54ceb0a7274](https://explorer.devnet.sui.io/objects/0x5200b6ba568714169557299c02d0d54ceb0a7274)
+- Registry object: [0x966e9dd752fc7482a7fd721434a7bd8e6717a6a4](https://explorer.devnet.sui.io/objects/0x966e9dd752fc7482a7fd721434a7bd8e6717a6a4)
+- Address resolver object: [0x282a7eb250b5f34926dd8353b568e315749c91b8](https://explorer.devnet.sui.io/objects/0x282a7eb250b5f34926dd8353b568e315749c91b8)
+- Name resolver object: [0xeb5e1b4818898fb31e42605f420a82968ab0c91b](https://explorer.devnet.sui.io/objects/0xeb5e1b4818898fb31e42605f420a82968ab0c91b)
+
 #### Registry
 
 A single source of truth maintaining a list of names recording the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. 
