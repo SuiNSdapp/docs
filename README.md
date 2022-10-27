@@ -54,6 +54,8 @@ Alice ->> SuiNS Registry: does f0f0.... own a-name.sui?
 
 ## Contracts
 
+On the contract publish event, a `AdminCap` NFT is mint to the deployer address and transferable to anyone - only address holding this NFT can call admin features.
+
 ### Current contracts/objects:
 - Package address: [0x5200b6ba568714169557299c02d0d54ceb0a7274](https://explorer.devnet.sui.io/objects/0x5200b6ba568714169557299c02d0d54ceb0a7274)
 - Registry object: [0x966e9dd752fc7482a7fd721434a7bd8e6717a6a4](https://explorer.devnet.sui.io/objects/0x966e9dd752fc7482a7fd721434a7bd8e6717a6a4)
