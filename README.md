@@ -82,14 +82,36 @@ More details: [Resolver Contract](./contracts/resolver.md).
 ## Interact with contract
 
 To buy a name, it requires 2 smart contract calls:
-```javascript
-const { utils } = require("ethers");
-const crypto = require('crypto');
+* check sample [commitment.js](./sample/commitment.js).
+```bash
 
-// generate commitment:
+PACKAGE_ADDR=
+SUI_REGISTRAR=
+​
+BASE_CONTROLLER=
+REGISTRY=
+// first value of: `sui client addresses`
+OWNER_ADDR=
+
+SECRET='random string'
+DOMAIN_NAME='a-name'
+SUI_DOMAIN_NAME="$DOMAIN_NAME.sui"
+
+COIN_ADDRESS=
+
+// generate commitment
+SUI_COMMITMENT=$(node ./sample/commitment.js $SUI_DOMAIN_NAME $OWNER_ADDR $SECRET);
 
 // first transaction: make commitment to buy a name
+sui client call --package $PACKAGE_ADDR --module base_controller \
+    --function make_commitment_and_commit \
+    --args $BASE_CONTROLLER $SUI_COMMITMENT --gas-budget 20000
+
 // final transaction: actual request to buy the name
+sui client call --package $PACKAGE_ADDR --module base_controller \
+    --function register \
+    --args $BASE_CONTROLLER $SUI_REGISTRAR $REGISTRY $CONFIGURATION $DOMAIN_NAME \
+    $OWNER_ADDR 365 $SECRET $COIN_ADDRESS --gas-budget 20000
 ```
 
 For details full open functions of our smart contracts, let's explore in each contract document itself.
