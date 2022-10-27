@@ -16,7 +16,7 @@ Parameters:
 - commitment: commitment bytes
 
 Register for a name requires 2 steps, this is the first step to make commitment to buy a domain. Refer to this sample [commitment.js](../sample/commitment.js) to see how to generate commitment.
-This function opens for everyone.
+This function is open to everyone.
 
 ### Register
 
@@ -36,8 +36,8 @@ Parameters:
 - secret: the secret string used to make commitment in the first transaction
 - payment: coin object used to pay for the domain registration
 
-Final step to register for a domain, this will add a new record into `Registry`, mints a new `RegistrationNFT` NFT represents for the owner of the domain and sends it to `owner` (anyone holds this NFT can claim for domain ownership).
-This function opens for everyone.
+Final step to register for a domain, this will add a new record into `Registry`, mints a new `RegistrationNFT` NFT representing for the owner of the domain and sends it to `owner` (anyone holds this NFT can claim for domain ownership).
+This function is open to everyone.
 
 Error codes:
 
@@ -83,13 +83,14 @@ Parameters:
 - duration: renew duration in epoch
 
 Renews for a domain.
-This function opens for everyone even not the owner of the name can call this method but only domain's expiry will be updated ownership stays as-is.
+This function is open to everyone even not the owner of the name can call this method but only domain's expiry will be updated; ownership stays as-is.
+Note: after renewing, the NFT representing for the domain will not be updated (image with expiry date). To be able to update content of the NFT to match with the new expiry date, we will have to limit this fuction to only address holding the NFT.
 
 Error codes:
 
 - 305: insufficient balance.
-- 207: domain not exist.
-- 205: domain expired - this method can be called anytime before expired time + grace period (90 epoches).
+- 207: domain does not exist.
+- 205: domain expired - this method can be called anytime before expired time + grace period (`90` epoches).
 
 Emits the following event:
 

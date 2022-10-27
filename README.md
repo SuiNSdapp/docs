@@ -48,13 +48,13 @@ SuiNS Registry ->> Alice: 0x9876...
 Alice ->> Resolver@0x9876...: name('f0f0....addr.reverse')?
 Note  over Alice,Resolver@0x9876...: find the name value of coresponding address <br/> in the resolver shared object.
 Resolver@0x9876... ->> Alice: a-name.sui
-Note  over Alice,Resolver@0x9876...: double check if a-name.sui is default name of f0f0... <br> by lookup registry again to see if f0f0... own the name.
+Note  over Alice,Resolver@0x9876...: double check if a-name.sui is default name of f0f0... <br> by looking up the registry again to see if f0f0... own the name.
 Alice ->> SuiNS Registry: does f0f0.... own a-name.sui?
 ```
 
 ## Contracts
 
-On the contract publish event, a `AdminCap` NFT is mint to the deployer address and transferable to anyone - only address holding this NFT can call admin features.
+On the contract publishing event, a `AdminCap` NFT is mint to the deployer address and transferable to anyone - only address holding this NFT can call admin features.
 
 ### Current contracts/objects:
 - Package address: [0x5200b6ba568714169557299c02d0d54ceb0a7274](https://explorer.devnet.sui.io/objects/0x5200b6ba568714169557299c02d0d54ceb0a7274)
@@ -64,7 +64,7 @@ On the contract publish event, a `AdminCap` NFT is mint to the deployer address 
 
 #### Registry
 
-A single source of truth maintaining a list of names recording the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. 
+A single source of truth maintaining a list of names records the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. 
 
 All SuiNS lookups start by querying the registry.
 
@@ -78,7 +78,7 @@ More details: [Registrar Contract](./contracts/registrar.md)
 
 #### Controller
 
-Built on top on registrar contract containing logics for name validation, prevent frontrunning, this is  the entry point for registering a new name. The contract also maintains funds collects from name purchases, only address holds the SuiNS Admin NFT can withdraw the funds.
+Built on top of the registrar contract containing logics for name validation, prevent frontrunning. This is the entry point for registering a new name. The contract also maintains funds collected from name purchases, only address holds the SuiNS Admin NFT can withdraw the funds.
 
 More details: [Controller Contract](./contracts/controller.md).
 
