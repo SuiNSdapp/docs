@@ -2,12 +2,14 @@
 
 [Source](https://github.com/SuiNSdapp/SuiNS-C/blob/main/sources/controller/base_controller.move)
 
+Built on top of the registrar contract containing logics for name validation, prevent frontrunning. This is the entry point for registering a new name. The contract also maintains funds collected from name purchases, only address holds the SuiNS Admin NFT can withdraw the funds.
+
 ## Public functions can be called anywhere
 
 ### Make commitment
 
 ```text
-public entry fun make_commitment_and_commit(controller: &mut BaseController, commitment: vector<u8>, ctx: &mut TxContext);
+public entry fun make_commitment_and_commit(controller: &mut BaseController, commitment: vector<u8>, ctx: &mut TxContext)
 ```
 
 Parameters:
@@ -15,13 +17,13 @@ Parameters:
 - controller: address of `BaseController` share object
 - commitment: commitment bytes
 
-Register for a name requires 2 steps, this is the first step to make commitment to buy a domain. Refer to this sample [commitment.js](../sample/commitment.js) to see how to generate commitment.
+Register for a name requires 2 steps, this is the first step to make commitment to buy a domain. Refer to this sample [commitment.cjs](../sample/commitment.cjs) to see how to generate commitment.
 This function is open to everyone.
 
 ### Register
 
 ```text
-public entry fun register(controller: &mut BaseController, registrar: &mut BaseRegistrar, registry: &mut Registry, config: &Configuration, label: vector<u8>, owner: address, duration: u64, secret: vector<u8>, payment: &mut Coin<SUI>, ctx: &mut TxContext);
+public entry fun register(controller: &mut BaseController, registrar: &mut BaseRegistrar, registry: &mut Registry, config: &Configuration, label: vector<u8>, owner: address, duration: u64, secret: vector<u8>, payment: &mut Coin<SUI>, ctx: &mut TxContext)
 ```
 
 Parameters:
@@ -64,7 +66,7 @@ struct NameRegisteredEvent has copy, drop {
 ### Register with custom resolver
 
 ```text
-public entry fun register(controller: &mut BaseController, registrar: &mut BaseRegistrar, registry: &mut Registry, config: &Configuration, label: vector<u8>, owner: address, duration: u64, secret: vector<u8>, resolver: address, payment: &mut Coin<SUI>, ctx: &mut TxContext);
+public entry fun register(controller: &mut BaseController, registrar: &mut BaseRegistrar, registry: &mut Registry, config: &Configuration, label: vector<u8>, owner: address, duration: u64, secret: vector<u8>, resolver: address, payment: &mut Coin<SUI>, ctx: &mut TxContext)
 ```
 
 Refers to `register` function. This function allows registering with custom resolver (does not use default).

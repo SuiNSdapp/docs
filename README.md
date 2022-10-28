@@ -91,7 +91,7 @@ More details: [Resolver Contract](./contracts/resolver.md).
 ## Interact with contract
 
 To buy a name, it requires 2 smart contract calls:
-* check sample [commitment.js](./sample/commitment.js).
+* check sample [commitment.cjs](./sample/commitment.cjs).
 ```bash
 
 PACKAGE_ADDR=
@@ -109,7 +109,7 @@ SUI_DOMAIN_NAME="$DOMAIN_NAME.sui"
 COIN_ADDRESS=
 
 // generate commitment
-SUI_COMMITMENT=$(node ./sample/commitment.js $SUI_DOMAIN_NAME $OWNER_ADDR $SECRET);
+SUI_COMMITMENT=$(node ./sample/commitment.cjs $SUI_DOMAIN_NAME $OWNER_ADDR $SECRET);
 
 // first transaction: make commitment to buy a name
 sui client call --package $PACKAGE_ADDR --module base_controller \

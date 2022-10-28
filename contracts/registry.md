@@ -8,7 +8,7 @@ A single source of truth maintaining a list of names recording the owner, resolv
 ### Set subdomain owner
 
 ```text
-public entry fun set_subnode_owner(registry: &mut Registry, node: vector<u8>, label: vector<u8>, owner: address, ctx: &mut TxContext);
+public entry fun set_subnode_owner(registry: &mut Registry, node: vector<u8>, label: vector<u8>, owner: address, ctx: &mut TxContext)
 ```
 Parameters:
 - registry: address of `Registry` share object
@@ -38,7 +38,7 @@ where "node" is the full domain (e.g. "sub-name.suins.sui")
 ### Set domain owner
 
 ```text
-public entry fun set_owner(registry: &mut Registry, node: vector<u8>, owner: address, ctx: &mut TxContext);
+public entry fun set_owner(registry: &mut Registry, node: vector<u8>, owner: address, ctx: &mut TxContext)
 ```
 Parameters:
 - registry: address of `Registry` share object
@@ -67,7 +67,7 @@ where "node" is the domain (e.g. "suins.sui")
 ### Set resolver
 
 ```text
-public entry fun set_resolver(registry: &mut Registry, node: vector<u8>, resolver: address, ctx: &mut TxContext);
+public entry fun set_resolver(registry: &mut Registry, node: vector<u8>, resolver: address, ctx: &mut TxContext)
 ```
 
 Parameters:
@@ -97,7 +97,7 @@ where "node" is the domain (e.g. "suins.sui")
 ### Set TTL
 
 ```text
-public entry fun set_TTL(registry: &mut Registry, node: vector<u8>, ttl: u64, ctx: &mut TxContext);
+public entry fun set_TTL(registry: &mut Registry, node: vector<u8>, ttl: u64, ctx: &mut TxContext)
 ```
 
 Parameters:
@@ -128,7 +128,7 @@ where "node" is the domain (e.g. "suins.sui")
 ### Get Owner
 
 ```text
-public fun owner(registry: &Registry, node: vector<u8>): address;
+public fun owner(registry: &Registry, node: vector<u8>): address
 ```
 Parameters:
 - registry: address of `Registry` share object
@@ -142,7 +142,7 @@ Error codes:
 ### Get Resolver
 
 ```text
-public fun resolver(registry: &Registry, node: vector<u8>): address;
+public fun resolver(registry: &Registry, node: vector<u8>): address
 ```
 Parameters:
 - registry: address of `Registry` share object
@@ -156,7 +156,7 @@ Error codes:
 ### Get TTL
 
 ```text
-public fun ttl(registry: &Registry, node: vector<u8>): u64;
+public fun ttl(registry: &Registry, node: vector<u8>): u64
 ```
 Parameters:
 - registry: address of `Registry` share object

@@ -8,7 +8,7 @@ Core functionality of the permanent registrar.
 ### Set new top-level domain (TLD)
 
 ```text
-public entry fun new_tld(admin_cap: &AdminCap, tlds_list: &mut TLDsList, tld: vector<u8>, ctx: &mut TxContext);
+public entry fun new_tld(admin_cap: &AdminCap, tlds_list: &mut TLDsList, tld: vector<u8>, ctx: &mut TxContext)
 ```
 Parameters:
 - admin_cap: address of `AdminCap` owned object
@@ -26,7 +26,7 @@ Error codes:
 ### Reclaim domain
 
 ```text
-public entry fun reclaim_by_nft_owner(registrar: &BaseRegistrar, registry: &mut Registry, nft: &RegistrationNFT, owner: address, ctx: &mut TxContext);
+public entry fun reclaim_by_nft_owner(registrar: &BaseRegistrar, registry: &mut Registry, nft: &RegistrationNFT, owner: address, ctx: &mut TxContext)
 ```
 Parameters:
 - registrar: address of `BaseRegistrar` share object
@@ -58,7 +58,7 @@ where "node" is the NFT domain
 ### Check domain availability
 
 ```text
-public fun available(registrar: &BaseRegistrar, label: String, ctx: &TxContext): bool;
+public fun available(registrar: &BaseRegistrar, label: String, ctx: &TxContext): bool
 ```
 Parameters:
 - registrar: address of `BaseRegistrar` share object
@@ -70,7 +70,7 @@ Returns availability status of the `domain` identified by `label` and `BaseRegis
 ### Get expiry time of a domain
 
 ```text
-public fun name_expires(registrar: &BaseRegistrar, label: String): u64;
+public fun name_expires(registrar: &BaseRegistrar, label: String): u64
 ```
 Parameters:
 - registrar: address of `BaseRegistrar` share object
@@ -82,7 +82,7 @@ Returns 0 for any non-existent domain.
 ### Check if a domain exists
 
 ```text
-public fun record_exists(registrar: &BaseRegistrar, label: String): bool;
+public fun record_exists(registrar: &BaseRegistrar, label: String): bool
 ```
 Parameters:
 - registrar: address of `BaseRegistrar` share object
@@ -91,5 +91,62 @@ Parameters:
 Returns existence status of the `domain` identified by `label` and `BaseRegistrar::base_node` (top level domain generated in `new_tld` function call).
 
 # Reverse Registrar
+[Source](https://github.com/SuiNSdapp/SuiNS-C/blob/main/sources/registrar/reverse_registrar.move)
+## Public functions can be called anywhere
+### Set default resolver
 
-To be updated!
+```text
+public entry fun set_default_resolver(_: &AdminCap, registrar: &mut ReverseRegistrar, resolver: address)
+```
+
+Parameters:
+
+- admin_cap: address of `AdminCap` owned object
+- registrar: address of `ReverseRegistrar` share object
+- resolver: address of new default resolver
+
+Sets default resolver for setting default name.
+Only callable by the address holds `AdminCap` NFT.
+
+Emits the following event:
+
+```text
+struct DefaultResolverChangedEvent has copy, drop {
+  resolver: address,
+}
+```
+
+### Claim reverse domain
+
+```text
+public entry fun claim(registrar: &mut ReverseRegistrar, registry: &mut Registry, owner: address, ctx: &mut TxContext) {
+```
+
+Parameters:
+
+- registrar: address of `ReverseRegistrar` share object
+- registry: address of `Registry` share object
+- owner: owner of the reverse domain
+
+Set default domain for an address requires 2 steps. 
+This is the first step to register for a `reverse domain`. Any `reverse domain` has the form `<sender_address>.addr.reverse`.
+This function is open to everyone.
+
+Note: This step is only need to be called once for any sender address, calling it more than once will change `owner`.  
+
+Emits the following event:
+
+```text
+struct ReverseClaimedEvent has copy, drop {
+    addr: address,
+    resolver: address,
+}
+```
+
+### Claim reverse domain with custom resolver
+
+```text
+public entry fun claim_with_resolver(registry: &mut Registry, owner: address, resolver: address, ctx: &mut TxContext)
+```
+
+Refers to `claim` function. This function allows claiming with custom resolver (does not use default).
