@@ -2,7 +2,6 @@
 
 SuiNS is a distributed naming system based on the Sui blockchain built with a set of smart contracts.
 
-
 ## Architecture
 
 ```mermaid
@@ -10,12 +9,12 @@ flowchart TB
  name1-->resolver1
  name2-->resolver1
  reverse-->resolver2
- 
+
  subgraph Resolvers
   resolver1
   resolver2
  end
- subgraph SuiNS Registry  
+ subgraph SuiNS Registry
   name1{{a-name.sui}}
   name2{{another-name.sui}}
   reverse{{1234....addr.reverse}}
@@ -57,14 +56,15 @@ Alice ->> SuiNS Registry: does f0f0.... own a-name.sui?
 On the contract publishing event, a `AdminCap` NFT is mint to the deployer address and transferable to anyone - only address holding this NFT can call admin features.
 
 ### Current contracts/objects:
-- Package address: [0x473c568d96ff655e6511d42df7ac4ffe1541b87c](https://explorer.devnet.sui.io/objects/0x473c568d96ff655e6511d42df7ac4ffe1541b87c)
-- Registry object: [0x66f67fa0badd07f482eed0e99680dd8ecc7bf20a](https://explorer.devnet.sui.io/objects/0x66f67fa0badd07f482eed0e99680dd8ecc7bf20a)
-- Address resolver object: [0x8689de3be68900d01646ef84e1c48339f9a22f41](https://explorer.devnet.sui.io/objects/0x8689de3be68900d01646ef84e1c48339f9a22f41)
-- Name resolver object: [0xcd6225140733e58dd46ef547af52af53c08bff06](https://explorer.devnet.sui.io/objects/0xcd6225140733e58dd46ef547af52af53c08bff06)
+
+- Package address: [0x6bb32b94c9e3002df133332f3c15794e6d49d99d](https://explorer.devnet.sui.io/objects/0x6bb32b94c9e3002df133332f3c15794e6d49d99d)
+- Registry object: [0x92d471492244ebe32508075c9a5126516e06f006](https://explorer.devnet.sui.io/objects/0x92d471492244ebe32508075c9a5126516e06f006)
+- Address resolver object: [0xc28f1375af7f759cebb99be9c5d475abb235b39d](https://explorer.devnet.sui.io/objects/0xc28f1375af7f759cebb99be9c5d475abb235b39d)
+- Name resolver object: [0xbe6b0caef9cb4601005b8a3deba6e07535050167](https://explorer.devnet.sui.io/objects/0xbe6b0caef9cb4601005b8a3deba6e07535050167)
 
 #### Registry
 
-A single source of truth maintaining a list of names records the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data. 
+A single source of truth maintaining a list of names records the owner, resolver, and TTL for each, and allows the owner of a domain to make changes to that data.
 
 All SuiNS lookups start by querying the registry.
 
@@ -91,7 +91,9 @@ More details: [Resolver Contract](./contracts/resolver.md).
 ## Interact with contract
 
 To buy a name, it requires 2 smart contract calls:
-* check sample [commitment.cjs](./sample/commitment.cjs).
+
+- check sample [commitment.cjs](./sample/commitment.cjs).
+
 ```bash
 
 PACKAGE_ADDR=
