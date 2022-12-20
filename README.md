@@ -126,3 +126,5 @@ sui client call --package $PACKAGE_ADDR --module base_controller \
 ```
 
 For details full open functions of our smart contracts, let's explore in each contract document itself.
+
+---
