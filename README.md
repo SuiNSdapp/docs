@@ -57,10 +57,10 @@ On the contract publishing event, a `AdminCap` NFT is mint to the deployer addre
 
 ### Current contracts/objects:
 
-- Package address: [0xd9d9e5c0663fd07a37bae732103f3f7a9debcb44](https://explorer.devnet.sui.io/objects/0xd9d9e5c0663fd07a37bae732103f3f7a9debcb44)
-- Registry object: [0x4702bf3e65bcf0053fcfd235cbc6581be15b06de](https://explorer.devnet.sui.io/objects/0x4702bf3e65bcf0053fcfd235cbc6581be15b06de)
-- Address resolver object [0xbeb45317bc14664329188a797eb65c34dbd10eaf](https://explorer.devnet.sui.io/objects/0xbeb45317bc14664329188a797eb65c34dbd10eaf)
-- Name resolver object: [0x0bab55ede3f3df1cfe750fce15f9b94c1703b7b7](https://explorer.devnet.sui.io/objects/0x0bab55ede3f3df1cfe750fce15f9b94c1703b7b7)
+- Package address: [0x684966a4c5cf1b0d2d0318a0506d81556e8a4ed5](https://explorer.devnet.sui.io/objects/0x684966a4c5cf1b0d2d0318a0506d81556e8a4ed5)
+- Registry object: [0x9abd95f887c443cfb295d440e1f47f7ceb352033](https://explorer.devnet.sui.io/objects/0x9abd95f887c443cfb295d440e1f47f7ceb352033)
+- Address resolver object [0xbb62fa7fb85ed8098c05db8a4a80b6f1e1368d74](https://explorer.devnet.sui.io/objects/0xbb62fa7fb85ed8098c05db8a4a80b6f1e1368d74)
+- Name resolver object: [0x7e973cf3bf7fc22f03cf846c1022e509f7ce439e](https://explorer.devnet.sui.io/objects/0x7e973cf3bf7fc22f03cf846c1022e509f7ce439e)
 
 #### Registry
 
